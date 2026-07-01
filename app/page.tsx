@@ -1,65 +1,141 @@
-import Image from "next/image";
+import Image from 'next/image';
+import { FaInstagram, FaTiktok } from 'react-icons/fa';
 
-export default function Home() {
+const socials = [
+  {
+    label: 'Instagram',
+    handle: '@makas_beautyplace',
+    description:
+      'See my latest styles, transformations, and behind-the-scenes.',
+    href: 'https://www.instagram.com/makas_beautyplace',
+    icon: <FaInstagram size={18} />,
+    cta: 'Follow on Instagram',
+    accent: 'bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF]',
+    textAccent: 'text-[#DD2A7B]',
+    bgAccent: 'bg-[#FFF0F7]',
+  },
+  {
+    label: 'TikTok',
+    handle: '@makas_beautyplace',
+    description: 'Watch quick tutorials, style reveals, and hair tips.',
+    href: 'https://www.tiktok.com/@makas_beautyplace?_r=1&_t=ZN-97UBWiPWsmE',
+    icon: <FaTiktok size={18} />,
+    cta: 'Follow on TikTok',
+    accent: 'bg-[#111827]',
+    textAccent: 'text-[#111827]',
+    bgAccent: 'bg-[#F3F4F6]',
+  },
+];
+
+export default function HairPage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className='min-h-screen bg-[#F9FAFB] px-4 py-16 md:px-8'>
+      <div className='mx-auto max-w-lg'>
+        {/* Header */}
+        <div className='mb-12 text-center'>
+          <div className='mx-auto mb-5 h-20 w-20 overflow-hidden rounded-2xl shadow-md ring-1 ring-black/5'>
+            <Image
+              src='/amy.jpeg'
+              alt='Amy'
+              width={80}
+              height={80}
+              className='h-full w-full object-cover'
+            />
+          </div>
+          <h1 className='text-[1.6rem] font-bold tracking-tight text-[#111827]'>
+            Maka&apos;s Beauty Place
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
+          <p className='mt-1.5 text-sm font-medium text-[#6B7280]'>
+            Luxury braids · Wig installs · Protective styling
+          </p>
+
+          {/* Badges row */}
+          <div className='mt-4 flex items-center justify-center gap-2 flex-wrap'>
+            <div className='inline-flex items-center gap-2 rounded-full border border-[#E5E7EB] bg-white px-4 py-1.5 text-xs font-medium text-[#6B7280] shadow-sm'>
+              <span className='h-2 w-2 rounded-full bg-green-400' />
+              Taking bookings · DM to schedule
+            </div>
+            <div className='inline-flex items-center gap-1.5 rounded-full border border-[#E5E7EB] bg-white px-4 py-1.5 text-xs font-medium text-[#6B7280] shadow-sm'>
+              🇨🇦 Canada
+            </div>
+          </div>
+        </div>
+
+        {/* Social cards */}
+        <div className='space-y-3'>
+          {socials.map((s) => (
             <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              key={s.label}
+              href={s.href}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='group flex items-center gap-4 rounded-2xl border border-[#E5E7EB] bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-[#D1D5DB]'
             >
-              Templates
-            </a>{" "}
-            or the{" "}
+              <div
+                className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-white ${s.accent} shadow-sm`}
+              >
+                {s.icon}
+              </div>
+              <div className='flex-1 min-w-0'>
+                <div className='flex items-center gap-2'>
+                  <span className='text-sm font-semibold text-[#111827]'>
+                    {s.label}
+                  </span>
+                  <span
+                    className={`rounded-full ${s.bgAccent} ${s.textAccent} px-2 py-0.5 text-xs font-semibold`}
+                  >
+                    {s.handle}
+                  </span>
+                </div>
+                <p className='mt-0.5 text-sm text-[#6B7280] leading-relaxed'>
+                  {s.description}
+                </p>
+              </div>
+              <span className='text-[#9CA3AF] transition-transform duration-200 group-hover:translate-x-1'>
+                →
+              </span>
+            </a>
+          ))}
+        </div>
+
+        {/* Book CTA */}
+        <div className='mt-6 rounded-2xl border border-[#E5E7EB] bg-[#111827] p-6 text-center shadow-sm'>
+          <p className='text-sm font-semibold text-white'>
+            Ready to book a hair appointment?
+          </p>
+          <p className='mt-1 text-xs text-[#9CA3AF] leading-relaxed'>
+            Slide into my DMs on Instagram or TikTok and let&apos;s get you
+            scheduled.
+          </p>
+          <div className='mt-4 flex items-center justify-center gap-3 flex-wrap'>
             <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              href='https://www.instagram.com/makas_beautyplace'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='inline-flex items-center gap-1.5 rounded-full bg-linear-to-r from-[#F58529] via-[#DD2A7B] to-[#8134AF] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90'
             >
-              Learning
-            </a>{" "}
-            center.
+              <FaInstagram size={13} />
+              DM on Instagram
+            </a>
+            <a
+              href='https://www.tiktok.com/@makas_beautyplace?_r=1&_t=ZN-97UBWiPWsmE'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='inline-flex items-center gap-1.5 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#111827] shadow-sm transition-opacity hover:opacity-90'
+            >
+              <FaTiktok size={13} />
+              DM on TikTok
+            </a>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className='mt-8 text-center space-y-1'>
+          <p className='text-xs text-[#9CA3AF]'>
+            © {new Date().getFullYear()} Maka&apos;s Beauty Place
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
