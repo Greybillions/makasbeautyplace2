@@ -1,7 +1,21 @@
 import Image from 'next/image';
-import { FaInstagram, FaTiktok } from 'react-icons/fa';
+import { FaInstagram, FaTiktok, FaWhatsapp } from 'react-icons/fa';
+
+const WHATSAPP_LINK = 'https://wa.me/15489963896';
 
 const socials = [
+  {
+    label: 'WhatsApp',
+    handle: 'Message directly',
+    description:
+      'Fastest way to book — chat with me directly for availability.',
+    href: WHATSAPP_LINK,
+    icon: <FaWhatsapp size={18} />,
+    cta: 'Message on WhatsApp',
+    accent: 'bg-[#25D366]',
+    textAccent: 'text-[#25D366]',
+    bgAccent: 'bg-[#E9FBF0]',
+  },
   {
     label: 'Instagram',
     handle: '@makas_beautyplace',
@@ -104,28 +118,39 @@ export default function HairPage() {
             Ready to book a hair appointment?
           </p>
           <p className='mt-1 text-xs text-[#9CA3AF] leading-relaxed'>
-            Slide into my DMs on Instagram or TikTok and let&apos;s get you
-            scheduled.
+            WhatsApp me directly for the fastest response, or reach out on
+            Instagram or TikTok.
           </p>
-          <div className='mt-4 flex items-center justify-center gap-3 flex-wrap'>
+          <div className='mt-4 flex flex-col items-center gap-3'>
             <a
-              href='https://www.instagram.com/makas_beautyplace'
+              href={WHATSAPP_LINK}
               target='_blank'
               rel='noopener noreferrer'
-              className='inline-flex items-center gap-1.5 rounded-full bg-linear-to-r from-[#F58529] via-[#DD2A7B] to-[#8134AF] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90'
+              className='inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90'
             >
-              <FaInstagram size={13} />
-              DM on Instagram
+              <FaWhatsapp size={15} />
+              Message on WhatsApp
             </a>
-            <a
-              href='https://www.tiktok.com/@makas_beautyplace?_r=1&_t=ZN-97UBWiPWsmE'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='inline-flex items-center gap-1.5 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#111827] shadow-sm transition-opacity hover:opacity-90'
-            >
-              <FaTiktok size={13} />
-              DM on TikTok
-            </a>
+            <div className='flex items-center justify-center gap-3 flex-wrap'>
+              <a
+                href='https://www.instagram.com/makas_beautyplace'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='inline-flex items-center gap-1.5 rounded-full bg-linear-to-r from-[#F58529] via-[#DD2A7B] to-[#8134AF] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90'
+              >
+                <FaInstagram size={13} />
+                DM on Instagram
+              </a>
+              <a
+                href='https://www.tiktok.com/@makas_beautyplace?_r=1&_t=ZN-97UBWiPWsmE'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='inline-flex items-center gap-1.5 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#111827] shadow-sm transition-opacity hover:opacity-90'
+              >
+                <FaTiktok size={13} />
+                DM on TikTok
+              </a>
+            </div>
           </div>
         </div>
 
